@@ -1,6 +1,6 @@
 from .coins import Coins
 class Items:
-    def __init__(self):
+    def __init__(self, item_list=None):
         self.GLOBAL_ITEM_LIST = [
             {
                 "name": "Banana",
@@ -83,7 +83,7 @@ class Items:
                 "quantity": 20
             },
         ]
-        self.ITEM_LIST = []
+        self.ITEM_LIST = item_list if item_list is not None else self.GLOBAL_ITEM_LIST
 
     def is_item_can_be_purchased(self, item, customer_coins_provisional_store):
         item_detail = self.ITEM_LIST.get(item)
