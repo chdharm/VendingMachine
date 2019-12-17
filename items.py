@@ -1,7 +1,7 @@
 from .coins import Coins
 class Items:
     def __init__(self):
-        self.ITEM_LIST = [
+        self.GLOBAL_ITEM_LIST = [
             {
                 "name": "Banana",
                 "price": 30,
@@ -83,6 +83,7 @@ class Items:
                 "quantity": 20
             },
         ]
+        self.ITEM_LIST = []
 
     def is_item_can_be_purchased(self, item, customer_coins_provisional_store):
         item_detail = self.ITEM_LIST.get(item)
