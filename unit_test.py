@@ -8,12 +8,12 @@ from vendingmachine import VendingMachine
 class VendingMachineUnitTesting(unittest.TestCase):
 
     # -------- Coin Section ------------ #
-    def test_is_valid_coin_10(self):
+    def test_is_valid_coin_with_correct_data(self):
         coin_obj = Coins()
         coin = 10
         self.assertEqual(True, coin_obj.is_valid_coin(coin))
 
-    def test_is_valid_coin_30(self):
+    def test_is_valid_coin_with_incorrect_data(self):
         coin_obj = Coins()
         coin = 30
         self.assertEqual(False, coin_obj.is_valid_coin(coin))
@@ -35,9 +35,29 @@ class VendingMachineUnitTesting(unittest.TestCase):
         coin_obj = Coins()
         all_available_coins = {"10": 0, "50": 10, "100": 20, "500": 30}
         self.assertEqual(False, coin_obj.can_coin_be_used(100, all_available_coins))
-    # -------- End of Coin Section ------------ #
+    # -------------------------------------- #
 
-    # --------
+    # -------- Item Section ---------- #
+    def test_is_item_can_be_purchased_with_correct_data(self):
+        item_obj = Items()
+        _customer_provision = {
+            "10": 30,
+            "50": 40,
+            "100": 2,
+            "500": 3
+        }
+        self.assertEqual(True, item_obj.is_item_can_be_purchased("Banana", _customer_provision))
+
+    def test_is_item_can_be_purchased_with_incorrect_data(self):
+        item_obj = Items()
+        _customer_provision = {
+            "10": 2,
+            "50": 0,
+            "100": 0,
+            "500": 0
+        }
+        self.assertEqual(False, item_obj.is_item_can_be_purchased("Banana", _customer_provision))
+    # -------------------------------- #
 
 
 if __name__ == '__main__':
