@@ -21,13 +21,13 @@ if __name__ == '__main__':
                 _item_no_request = int(_input.split(" ")[1])
                 print("_item_no_request:", _item_no_request)
             elif _input[:1] == "3":
-                # Get the item
+                print("Get the item")
                 pass
             elif _input[:1] == "4":
-                # Return Coins
+                print("Return the coins")
                 pass
             elif _input[:1] == "5":
-                # Get the returned coin
+                print("Get returned coin")
                 pass
         elif last_action == "ready_to_select_items":
             _input = input("Please enter the command!")
