@@ -59,6 +59,59 @@ class VendingMachineUnitTesting(unittest.TestCase):
         self.assertEqual(False, item_obj.is_item_can_be_purchased("Banana", _customer_provision))
     # -------------------------------- #
 
+    # --------- Vending Machine --------- #
+    def test_admin_update_quantity_with_correct_data(self):
+        vm_m = VendingMachine()
+        name = "Banana"
+        item_detail = list(filter(lambda x: x["name"] == name, vm_m.ITEM_LIST))
+        item_detail = item_detail[0]
+        previous_quantity = item_detail.get("quantity")
+
+        vm_m.admin_update_quantity({"name": "Banana", "quantity": 20, "price": 30})
+        item_detail = list(filter(lambda x: x["name"] == name, vm_m.ITEM_LIST))
+        item_detail = item_detail[0]
+        new_quantity = item_detail.get("quantity")
+        self.assertEqual(True, previous_quantity != new_quantity)
+
+    def test_admin_update_quantity_with_incorrect_data(self):
+        vm_m = VendingMachine()
+        name = "Banana"
+        item_detail = list(filter(lambda x: x["name"] == name, vm_m.ITEM_LIST))
+        item_detail = item_detail[0]
+        previous_quantity = item_detail.get("quantity")
+
+        vm_m.admin_update_quantity({"name": "Banana", "quantity": 0, "price": 30})
+        item_detail = list(filter(lambda x: x["name"] == name, vm_m.ITEM_LIST))
+        item_detail = item_detail[0]
+        new_quantity = item_detail.get("quantity")
+        self.assertEqual(False, previous_quantity != new_quantity)
+
+    # def test_admin_add_stock_with_correct_data(self):
+    #     vm_m = VendingMachine()
+    #     self.assertEqual(True, )
+    #
+    # def test_admin_add_stock_with_incorrect_data(self):
+    #     vm_m = VendingMachine()
+    #     self.assertEqual(False, )
+    #
+    # def test_admin_add_vending_machine_coins_with_correct_data(self):
+    #     vm_m = VendingMachine()
+    #     self.assertEqual(True, )
+    #
+    # def test_admin_add_vending_machine_coins_with_incorrect_data(self):
+    #     vm_m = VendingMachine()
+    #     self.assertEqual(False, )
+    #
+    # def test_add_coin_with_correct_data(self):
+    #     vm_m = VendingMachine()
+    #     self.assertEqual(True, )
+    #
+    # def test_add_coin_with_incorrect_data(self):
+    #     vm_m = VendingMachine()
+    #     self.assertEqual(False, )
+
+    # ----------------------------------- #
+
 
 if __name__ == '__main__':
     unittest.main()
