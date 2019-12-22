@@ -13,9 +13,13 @@ class Coins:
         if all_coins_in_vending_machine["10"] == 0:
             if coin > 10:
                 return False
+        elif coin == 10:
+            return True
         elif all_coins_in_vending_machine["100"] == 0:
             if coin > 100:
                 return False
+        elif coin == 100:
+            return True
         return True
 
     @staticmethod
